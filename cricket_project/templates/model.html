@@ -1,0 +1,39 @@
+<!-- predict_page.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Score Prediction</title>
+</head>
+<body>
+    <h1>Cricket Score Prediction</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="runs">Runs:</label>
+        <input type="text" name="runs" required><br>
+        <label for="wickets">Wickets:</label>
+        <input type="text" name="wickets" required><br>
+        <label for="overs">Overs:</label>
+        <input type="text" name="overs" required><br>
+        <label for="striker">Striker:</label>
+        <input type="text" name="striker" required><br>
+        <label for="non_striker">Non-striker:</label>
+        <input type="text" name="non_striker" required><br>
+        <input type="submit" value="Predict">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            document.getElementById('result').textContent = `Predicted Score: ${data.prediction}`;
+        });
+    </script>
+</body>
+</html>

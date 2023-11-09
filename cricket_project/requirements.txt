@@ -1,0 +1,6 @@
+requests
+pandas
+bs4
+scikit-learn
+plotly
+lxml
