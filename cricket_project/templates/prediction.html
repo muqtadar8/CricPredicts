@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Model Prediction</title>
+</head>
+<body>
+    <h1>Machine Learning Model Prediction</h1>
+    <form id="prediction-form">
+        <label for="feature1">Feature 1:</label>
+        <input type="text" id="feature1" name="feature1" required>
+        <br>
+
+        <label for="feature2">Feature 2:</label>
+        <input type="text" id="feature2" name="feature2" required>
+        <br>
+
+        <label for="feature3">Feature 3:</label>
+        <input type="text" id="feature3" name="feature3" required>
+        <br>
+
+        <label for="feature4">Feature 4:</label>
+        <input type="text" id="feature4" name="feature4" required>
+        <br>
+
+        <label for="feature5">Feature 5:</label>
+        <input type="text" id="feature5" name="feature5" required>
+        <br>
+
+        <button type="button" id="predict-button">Predict</button>
+    </form>
+
+    <h2>Prediction Result</h2>
+    <p id="prediction-result"></p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#predict-button').click(function() {
+                // Get input values
+                var feature1 = parseFloat($('#feature1').val());
+                var feature2 = parseFloat($('#feature2').val());
+                var feature3 = parseFloat($('#feature3').val());
+                var feature4 = parseFloat($('#feature4').val());
+                var feature5 = parseFloat($('#feature5').val());
+
+                // Make an AJAX request to your Django view
+                $.ajax({
+                    type: 'GET',
+                    url: '/predict/',  // Update with your actual URL
+                    data: {
+                        feature1: feature1,
+                        feature2: feature2,
+                        feature3: feature3,
+                        feature4: feature4,
+                        feature5: feature5
+                    },
+                    success: function(response) {
+                        $('#prediction-result').text('Prediction: ' + response.prediction);
+                    },
+                    error: function() {
+                        $('#prediction-result').text('An error occurred during the prediction.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

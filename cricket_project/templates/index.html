@@ -1,0 +1,135 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add Bootstrap JavaScript and Popper.js (for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricPredicts - Your Cricket Prediction Source</title>
+    <!-- <link rel = "stylesheet" href=""> -->
+    <style>
+        /* Add your CSS styles here */
+
+        body {
+            background-image: url("{% static 'back.jpeg'%}"); /* Replace 'your-background-image.jpg' with the actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #0047ab;
+        }
+        .navbar {
+            margin-bottom: 0;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-link {
+            color: #fff;
+            font-size: 18px;
+        }
+        .nav-link:hover {
+            color: #d8eaff;
+        }
+        .hero {
+            
+            text-align: center;
+            padding: 100px 0;
+            color: #fff;
+            margin-top: 500px;
+        }
+        .hero h1 {
+            font-size: 36px;
+            color: #fdfeff;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #fbf9f9;
+        }
+        .btn-primary {
+            background-color: #0047ab;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #003584;
+        }
+        /* Sticky footer styles */
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        footer {
+            background-color: #0047ab;
+            color: #fff;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">CricPredicts</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'predict' %}">Predict</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Stats
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'onevsall' %}">One vs All</a></li>
+                                <li><a class="dropdown-item" href="{% url 'oneonone' %}">Head to Head</a></li>
+                                <li><a class="dropdown-item" href="{% url 'getsquad'%}">Players Stats</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="hero">
+            <h1>Welcome to CricPredicts</h1>
+            <p>Your source for cricket match predictions and analysis.</p>
+            <a href="/predictions" class="btn btn-primary">Get Predictions</a>
+        </section>
+
+        <!-- Add more content here as needed -->
+    </main>
+    </div>    
+<!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 CricPredicts. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
